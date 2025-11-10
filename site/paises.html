@@ -2,8 +2,9 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
-  <title>Países - CRUD Mundo</title>
+  <title>Países</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/x-icon" href="img/icon.jpg">
 </head>
 <body>
 
@@ -18,8 +19,15 @@
     </nav>
   </header>
 
-  <button class="btn" onclick="show('#modal-add-pais')">+ Adicionar País</button>
-  <input type="text" id="search-pais" placeholder="Buscar país..." style="margin-top: 15px;">
+  <div class="action-buttons">
+      <button class="btn" onclick="show('#modal-add-pais')">+ Adicionar País</button>
+      <button class="btn" onclick="forcarAtualizacaoBandeiras()" style="background: #f59e0b;">
+          🔄 Atualizar Bandeiras
+      </button>
+      <button class="btn" onclick="corrigirBandeirasProblema()" style="background: #dc2626;">
+          🚨 Corrigir Bandeiras
+      </button>
+  </div>
 
   <table>
     <thead>
