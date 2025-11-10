@@ -19,15 +19,8 @@
     </nav>
   </header>
 
-  <div class="action-buttons">
-      <button class="btn" onclick="show('#modal-add-pais')">+ Adicionar País</button>
-      <button class="btn" onclick="forcarAtualizacaoBandeiras()" style="background: #f59e0b;">
-          🔄 Atualizar Bandeiras
-      </button>
-      <button class="btn" onclick="corrigirBandeirasProblema()" style="background: #dc2626;">
-          🚨 Corrigir Bandeiras
-      </button>
-  </div>
+  <button class="btn" onclick="show('#modal-add-pais')">+ Adicionar País</button>
+  <input type="text" id="search-pais" placeholder="Buscar país..." style="margin-top: 15px;">
 
   <table>
     <thead>
