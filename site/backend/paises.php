@@ -1,4 +1,5 @@
 <?php
+// backend/paises.php
 header("Content-Type: application/json; charset=utf-8");
 require_once "config.php";
 
@@ -11,7 +12,7 @@ try {
 
     switch ($action) {
         case 'read':
-            $sql = "SELECT id_pais, nome, continente, populacao, idioma FROM paises ORDER BY nome";
+            $sql = "SELECT id_pais, nome, continente, populacao, idioma, bandeira_url FROM paises ORDER BY nome";
             $result = $conn->query($sql);
             
             if (!$result) {
@@ -31,13 +32,14 @@ try {
             $continente = trim($_POST['continente'] ?? '');
             $populacao = !empty($_POST['populacao']) ? (int)$_POST['populacao'] : null;
             $idioma = trim($_POST['idioma'] ?? '');
+            $bandeira_url = trim($_POST['bandeira_url'] ?? '');
 
             if (empty($nome) || empty($continente) || empty($idioma)) {
                 throw new Exception("Nome, continente e idioma são obrigatórios");
             }
 
-            $stmt = $conn->prepare("INSERT INTO paises (nome, continente, populacao, idioma) VALUES (?, ?, ?, ?)");
-            $stmt->bind_param("ssis", $nome, $continente, $populacao, $idioma);
+            $stmt = $conn->prepare("INSERT INTO paises (nome, continente, populacao, idioma, bandeira_url) VALUES (?, ?, ?, ?, ?)");
+            $stmt->bind_param("ssiss", $nome, $continente, $populacao, $idioma, $bandeira_url);
             
             if ($stmt->execute()) {
                 echo json_encode(["success" => true, "id_pais" => $stmt->insert_id]);
@@ -52,13 +54,14 @@ try {
             $continente = trim($_POST['continente'] ?? '');
             $populacao = !empty($_POST['populacao']) ? (int)$_POST['populacao'] : null;
             $idioma = trim($_POST['idioma'] ?? '');
+            $bandeira_url = trim($_POST['bandeira_url'] ?? '');
 
             if ($id_pais <= 0 || empty($nome) || empty($continente) || empty($idioma)) {
                 throw new Exception("Dados inválidos para atualização");
             }
 
-            $stmt = $conn->prepare("UPDATE paises SET nome=?, continente=?, populacao=?, idioma=? WHERE id_pais=?");
-            $stmt->bind_param("ssisi", $nome, $continente, $populacao, $idioma, $id_pais);
+            $stmt = $conn->prepare("UPDATE paises SET nome=?, continente=?, populacao=?, idioma=?, bandeira_url=? WHERE id_pais=?");
+            $stmt->bind_param("ssissi", $nome, $continente, $populacao, $idioma, $bandeira_url, $id_pais);
             
             if ($stmt->execute()) {
                 echo json_encode(["success" => true]);
