@@ -24,10 +24,11 @@ Ele permite cadastrar, listar, editar e excluir países e cidades, além de exib
 - Exibição automática do clima
 
 ### 📊 Página Inicial (Dashboard)
-- Total de cidades cadastradas
+- Total de cidades
+- Total de países
 - Cidade mais populosa
 - País mais populoso
-- Número de cidades por continente
+- Distribuição por continente
 
 ---
 
@@ -38,8 +39,3 @@ Ele permite cadastrar, listar, editar e excluir países e cidades, além de exib
 | **REST Countries** | Busca bandeira do país | https://restcountries.com/ |
 | **OpenWeatherMap** | Mostra clima atual da cidade | https://openweathermap.org/api |
 
-> 💡 Para usar clima, você precisa obter sua chave gratuita no OpenWeatherMap.
-
-No arquivo `js/script.js`, defina sua chave:
-```javascript
-const API_KEY_WEATHER = "SUA_CHAVE_AQUI";
