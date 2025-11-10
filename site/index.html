@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>CRUD Mundo</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    
+    <!-- Header Minimalista -->
+    <header class="header-minimal">
+      <nav class="menu-minimal">
+        <a href="index.html">Tela Inicial</a>
+        <a href="paises.html">Países</a>
+        <a href="cidades.html">Cidades</a>
+      </nav>
+      
+      <h1 class="titulo-principal">CRUD MUNDO</h1>
+    </header>
+
+    <!-- Estatísticas -->
+    <section class="estatisticas">
+      <div class="card-estatistica">
+        <h3>Total de Cidades</h3>
+        <p id="total-cidades">0</p>
+      </div>
+      <div class="card-estatistica">
+        <h3>Total de Países</h3>
+        <p id="total-paises">0</p>
+      </div>
+      <div class="card-estatistica">
+        <h3>Cidade Mais Populosa</h3>
+        <p id="cidade-populosa">-</p>
+      </div>
+      <div class="card-estatistica">
+        <h3>País Mais Populoso</h3>
+        <p id="pais-populoso">-</p>
+      </div>
+    </section>
+
+    <!-- Distribuição por Continente -->
+    <section class="distribuicao-section">
+      <div class="distribuicao-card">
+        <h2>Distribuição por Continente</h2>
+        <div id="chart-continentes" class="continentes-grid">
+          <div class="loading">Carregando...</div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>
