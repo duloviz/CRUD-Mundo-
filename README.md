@@ -9,7 +9,7 @@ Ele permite cadastrar, listar, editar e excluir países e cidades, além de exib
 
 ---
 
-## ✨ Funcionalidades
+## Funcionalidades
 
 ### 🏳️ Países
 - Cadastrar novo país
