@@ -1,76 +1,76 @@
-  <!doctype html>
-  <html lang="pt-BR">
-  <head>
+<!doctype html>
+<html lang="pt-BR">
+<head>
     <meta charset="utf-8">
     <title>Cidades</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/x-icon" href="img/icon.jpg">
-  </head>
-  <body>
+</head>
+<body>
 
-  <div class="container">
+<div class="container">
     <header class="header">
-      <div>
-        <h1>Cidades</h1>
-      </div>
-      <nav class="menu">
-        <a href="index.html">Tela Inicial</a>
-        <a href="paises.html">Países</a>
-      </nav>
+        <div>
+            <h1>Cidades</h1>
+        </div>
+        <nav class="menu">
+            <a href="index.html">Tela Inicial</a>
+            <a href="paises.html">Países</a>
+        </nav>
     </header>
 
-    <button class="btn" onclick="show('#modal-add-cidade')">+ Adicionar Cidade</button>
+    <button class="btn" onclick="abrirModalCidade()">+ Adicionar Cidade</button>
     <input type="text" id="search-cidade" placeholder="Buscar cidade..." style="margin-top: 15px;">
 
     <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Cidade</th>
-          <th>População</th>
-          <th>País</th>
-          <th>Clima</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
-      <tbody id="tbody-cidades"></tbody>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Cidade</th>
+                <th>População</th>
+                <th>País</th>
+                <th>Clima</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody id="tbody-cidades"></tbody>
     </table>
-  </div>
+</div>
 
-  <!-- MODAL CADASTRAR CIDADE -->
-  <div id="modal-add-cidade" class="modal hidden">
+<!-- MODAL CADASTRAR CIDADE -->
+<div id="modal-add-cidade" class="modal hidden">
     <div class="modal-content">
-      <h2>Cadastrar Cidade</h2>
-      <form id="form-cidade">
-        <input name="nome" placeholder="Nome da cidade" required>
-        <input name="populacao" type="number" placeholder="População">
-        <select name="id_pais" id="select-pais" required>
-          <option value="">Carregando países...</option>
-        </select>
-        <div class="button-group">
-          <button class="btn" type="submit">Salvar</button>
-          <button type="button" class="btn-secondary" onclick="hide('#modal-add-cidade')">Cancelar</button>
-        </div>
-      </form>
+        <h2>Cadastrar Cidade</h2>
+        <form id="form-cidade">
+            <input name="nome" placeholder="Nome da cidade" required>
+            <input name="populacao" type="number" placeholder="População">
+            <select name="id_pais" id="select-pais" required>
+                <option value="">Carregando países...</option>
+            </select>
+            <div class="button-group">
+                <button class="btn" type="submit">Salvar</button>
+                <button type="button" class="btn-secondary" onclick="hide('#modal-add-cidade')">Cancelar</button>
+            </div>
+        </form>
     </div>
-  </div>
+</div>
 
-  <!-- MODAL EDITAR CIDADE -->
-  <div id="modal-edit-cidade" class="modal hidden">
+<!-- MODAL EDITAR CIDADE -->
+<div id="modal-edit-cidade" class="modal hidden">
     <div class="modal-content">
-      <h2>Editar Cidade</h2>
-      <form id="form-edicao-cidade">
-        <input type="hidden" name="id_cidade" id="edit-id-cidade">
-        <input id="edit-nome-cidade" name="nome" required>
-        <input id="edit-populacao-cidade" name="populacao" type="number">
-        <select name="id_pais" id="edit-select-pais" required></select>
-        <button class="btn" type="submit">Salvar Alterações</button>
-        <button type="button" class="btn-secondary" onclick="hide('#modal-edit-cidade')">Cancelar</button>
-      </form>
+        <h2>Editar Cidade</h2>
+        <form id="form-edicao-cidade">
+            <input type="hidden" name="id_cidade" id="edit-id-cidade">
+            <input id="edit-nome-cidade" name="nome" required>
+            <input id="edit-populacao-cidade" name="populacao" type="number">
+            <select name="id_pais" id="edit-select-pais" required></select>
+            <button class="btn" type="submit">Salvar Alterações</button>
+            <button type="button" class="btn-secondary" onclick="hide('#modal-edit-cidade')">Cancelar</button>
+        </form>
     </div>
-  </div>
+</div>
 
-  <script src="js/api.js"></script>
-  <script src="js/cidades.js"></script>
-  </body>
-  </html>
+<script src="js/api.js"></script>
+<script src="js/cidades.js"></script>
+</body>
+</html>
