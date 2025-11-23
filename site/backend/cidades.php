@@ -1,4 +1,5 @@
 <?php
+// Similar ao paises.php, mas para cidades
 header("Content-Type: application/json; charset=utf-8");
 require_once "config.php";
 
@@ -10,7 +11,7 @@ try {
     }
 
     switch ($action) {
-        case 'read':
+        case 'read': // LER cidades com nome do país
             $sql = "SELECT c.id_cidade, c.nome, c.populacao, c.id_pais, p.nome AS pais_nome
                     FROM cidades c 
                     JOIN paises p ON c.id_pais = p.id_pais
@@ -30,15 +31,17 @@ try {
             echo json_encode($cidades);
             break;
 
-        case 'create':
+        case 'create': // CRIAR cidade
             $nome = trim($_POST['nome'] ?? '');
             $populacao = !empty($_POST['populacao']) ? (int)$_POST['populacao'] : null;
             $id_pais = (int)($_POST['id_pais'] ?? 0);
 
+            // Valida nome e país
             if (empty($nome) || $id_pais <= 0) {
                 throw new Exception("Nome e país são obrigatórios");
             }
 
+            // Insere cidade no banco
             $stmt = $conn->prepare("INSERT INTO cidades (nome, populacao, id_pais) VALUES (?, ?, ?)");
             $stmt->bind_param("sii", $nome, $populacao, $id_pais);
             
@@ -49,7 +52,7 @@ try {
             }
             break;
 
-        case 'update':
+        case 'update': // ATUALIZAR cidade
             $id_cidade = (int)($_POST['id_cidade'] ?? 0);
             $nome = trim($_POST['nome'] ?? '');
             $populacao = !empty($_POST['populacao']) ? (int)$_POST['populacao'] : null;
@@ -69,7 +72,7 @@ try {
             }
             break;
 
-        case 'delete':
+        case 'delete': // EXCLUIR cidade
             $id_cidade = (int)($_POST['id_cidade'] ?? 0);
             
             if ($id_cidade <= 0) {
