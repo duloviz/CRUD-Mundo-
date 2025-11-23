@@ -1,29 +1,29 @@
-DROP DATABASE IF EXISTS bd_mundo_maria;
-CREATE DATABASE IF NOT EXISTS bd_mundo_maria;
-USE bd_mundo_maria;
+drop database bd_mundo_maria;
+create database if not exists bd_mundo_maria;
+use bd_mundo_maria;
 
 -- tabela paises
-CREATE TABLE paises (
-  id_pais INT AUTO_INCREMENT PRIMARY KEY,
-  nome VARCHAR(120) NOT NULL,
-  continente VARCHAR(50) NOT NULL,
-  populacao BIGINT,
-  idioma VARCHAR(100) NOT NULL
+create table paises (
+  id_pais int auto_increment primary key,
+  nome varchar(120) not null,
+  continente varchar(50) not null,
+  populacao bigint,
+  idioma varchar(100) not null
 );
 
 -- tabela cidades
-CREATE TABLE cidades (
-  id_cidade INT AUTO_INCREMENT PRIMARY KEY,
-  nome VARCHAR(120) NOT NULL,
-  populacao BIGINT,
-  id_pais INT NOT NULL,
-  FOREIGN KEY (id_pais) REFERENCES paises(id_pais)
-    ON UPDATE CASCADE
-    ON DELETE RESTRICT
+create table cidades (
+  id_cidade int auto_increment primary key,
+  nome varchar(120) not null,
+  populacao bigint,
+  id_pais int not null,
+  foreign key (id_pais) references paises(id_pais)
+    on update cascade
+    on delete restrict
 );
 
--- Dados de exemplo
-INSERT INTO paises (nome, continente, populacao, idioma) VALUES
+insert into paises (nome, continente, populacao, idioma)
+values
 ('Brasil', 'América do Sul', 214000000, 'Português'),
 ('Estados Unidos', 'América do Norte', 331000000, 'Inglês'),
 ('Coreia do Sul', 'Ásia', 52000000, 'Coreano'),
@@ -36,7 +36,8 @@ INSERT INTO paises (nome, continente, populacao, idioma) VALUES
 ('Alemanha', 'Europa', 83000000, 'Alemão'),
 ('Arábia Saudita', 'Ásia', 36000000, 'Árabe');
 
-INSERT INTO cidades (nome, populacao, id_pais) VALUES
+insert into cidades (nome, populacao, id_pais)
+values
 -- brasil
 ('São Paulo', 12252023, 1),
 ('Rio de Janeiro', 6748000, 1),
@@ -92,9 +93,7 @@ INSERT INTO cidades (nome, populacao, id_pais) VALUES
 ('Jeddah', 3976000, 11),
 ('Dammam', 1150000, 11);
 
-ALTER TABLE cidades DROP FOREIGN KEY cidades_ibfk_1;
+select * from paises;
+select * from cidades; 
 
-ALTER TABLE cidades 
-ADD CONSTRAINT fk_cidades_paises 
-FOREIGN KEY (id_pais) REFERENCES paises(id_pais) 
-ON DELETE CASCADE;
+
