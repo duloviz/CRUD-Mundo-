@@ -1,72 +1,74 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <title>Países</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" type="image/x-icon" href="img/icon.jpg">
+    <meta charset="utf-8">
+    <title>Países</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="img/icon.jpg">
 </head>
 <body>
 
 <div class="container">
-  <header class="header">
-    <div>
-      <h1>Países</h1>
-    </div>
-    <nav class="menu">
-      <a href="index.html">Tela Inicial</a>
-      <a href="cidades.html">Cidades</a>
-    </nav>
-  </header>
+    <header class="header">
+        <div>
+            <h1>Países</h1>
+        </div>
+        <nav class="menu">
+            <a href="index.html">Tela Inicial</a>
+            <a href="cidades.html">Cidades</a>
+        </nav>
+    </header>
 
-  <button class="btn" onclick="show('#modal-add-pais')">+ Adicionar País</button>
-  <input type="text" id="search-pais" placeholder="Buscar país..." style="margin-top: 15px;">
+    <button class="btn" onclick="abrirModalPais()">+ Adicionar País</button>
+    <input type="text" id="search-pais" placeholder="Buscar país..." style="margin-top: 15px;">
 
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Bandeira</th>
-        <th>Nome</th>
-        <th>Continente</th>
-        <th>População</th>
-        <th>Idioma</th>
-        <th>Ações</th>
-      </tr>
-    </thead>
-    <tbody id="tbody-paises"></tbody>
-  </table>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Bandeira</th>
+                <th>País</th>
+                <th>Continente</th>
+                <th>População</th>
+                <th>Idioma</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody id="tbody-paises"></tbody>
+    </table>
 </div>
 
 <!-- MODAL CADASTRAR PAÍS -->
 <div id="modal-add-pais" class="modal hidden">
-  <div class="modal-content">
-    <h2>Cadastrar País</h2>
-    <form id="form-pais">
-      <input name="nome" placeholder="Nome" required>
-      <input name="continente" placeholder="Continente" required>
-      <input name="populacao" type="number" placeholder="População">
-      <input name="idioma" placeholder="Idioma" required>
-      <button class="btn" type="submit">Salvar</button>
-      <button type="button" class="btn-secondary" onclick="hide('#modal-add-pais')">Cancelar</button>
-    </form>
-  </div>
+    <div class="modal-content">
+        <h2>Cadastrar País</h2>
+        <form id="form-pais">
+            <input name="nome" placeholder="Nome do país" required>
+            <input name="continente" placeholder="Continente" required>
+            <input name="populacao" type="number" placeholder="População">
+            <input name="idioma" placeholder="Idioma principal" required>
+            <div class="button-group">
+                <button class="btn" type="submit">Salvar</button>
+                <button type="button" class="btn-secondary" onclick="hide('#modal-add-pais')">Cancelar</button>
+            </div>
+        </form>
+    </div>
 </div>
 
 <!-- MODAL EDITAR PAÍS -->
 <div id="modal-edit-pais" class="modal hidden">
-  <div class="modal-content">
-    <h2>Editar País</h2>
-    <form id="form-edicao-pais">
-      <input type="hidden" name="id_pais" id="edit-id-pais">
-      <input id="edit-nome-pais" name="nome" required>
-      <input id="edit-continente-pais" name="continente" required>
-      <input id="edit-populacao-pais" name="populacao" type="number">
-      <input id="edit-idioma-pais" name="idioma" required>
-      <button class="btn" type="submit">Salvar Alterações</button>
-      <button type="button" class="btn-secondary" onclick="hide('#modal-edit-pais')">Cancelar</button>
-    </form>
-  </div>
+    <div class="modal-content">
+        <h2>Editar País</h2>
+        <form id="form-edicao-pais">
+            <input type="hidden" name="id_pais" id="edit-id-pais">
+            <input id="edit-nome-pais" name="nome" required>
+            <input id="edit-continente-pais" name="continente" required>
+            <input id="edit-populacao-pais" name="populacao" type="number">
+            <input id="edit-idioma-pais" name="idioma" required>
+            <button class="btn" type="submit">Salvar Alterações</button>
+            <button type="button" class="btn-secondary" onclick="hide('#modal-edit-pais')">Cancelar</button>
+        </form>
+    </div>
 </div>
 
 <script src="js/api.js"></script>
