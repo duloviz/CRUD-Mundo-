@@ -1,22 +1,24 @@
+// URLs dos arquivos PHP no backend
 const backendPaises = "backend/paises.php";
 const backendCidades = "backend/cidades.php";
 
-// Função básica para ler dados
+// Função para LER dados (países ou cidades)
 async function apiRead(entity) {
     try {
         console.log(`🔍 Buscando ${entity}...`);
         
+        // Escolhe a URL certa
         const url = entity === "paises" ? backendPaises : backendCidades;
         const fullUrl = `${url}?action=read`;
         
-        console.log(`📡 URL: ${fullUrl}`);
-        
+        // Faz requisição para o PHP
         const response = await fetch(fullUrl);
         
         if (!response.ok) {
             throw new Error(`Erro HTTP: ${response.status}`);
         }
         
+        // Converte resposta para JSON
         const data = await response.json();
         console.log(`✅ ${entity} carregados:`, data);
         
@@ -28,12 +30,13 @@ async function apiRead(entity) {
     }
 }
 
-// Funções CRUD básicas
+// Função para CRIAR novo registro
 async function apiCreate(entity, formData) {
     try {
         formData.append("action", "create");
         const url = entity === "paises" ? backendPaises : backendCidades;
         
+        // Envia dados via POST
         const response = await fetch(url, {
             method: "POST",
             body: formData
@@ -46,6 +49,7 @@ async function apiCreate(entity, formData) {
     }
 }
 
+// Função para ATUALIZAR registro
 async function apiUpdate(entity, formData) {
     try {
         formData.append("action", "update");
@@ -63,10 +67,12 @@ async function apiUpdate(entity, formData) {
     }
 }
 
+// Função para EXCLUIR registro
 async function apiDelete(entity, id) {
     try {
         const data = new FormData();
         data.append("action", "delete");
+        // Escolhe o campo ID correto
         data.append(entity === "paises" ? "id_pais" : "id_cidade", id);
         
         const url = entity === "paises" ? backendPaises : backendCidades;
@@ -82,7 +88,7 @@ async function apiDelete(entity, id) {
     }
 }
 
-// Funções auxiliares para modais
+// Funções para mostrar/ocultar elementos na tela
 function show(selector) { 
     const element = document.querySelector(selector);
     if (element) {
@@ -97,7 +103,7 @@ function hide(selector) {
     }
 }
 
-// Função para mostrar notificações
+// Mostra notificações na tela
 function showNotification(message, type = 'success') {
     // Remove notificação anterior se existir
     const existingNotification = document.querySelector('.notification');
@@ -105,9 +111,12 @@ function showNotification(message, type = 'success') {
         existingNotification.remove();
     }
 
+    // Cria nova notificação
     const notification = document.createElement('div');
     notification.className = `notification ${type}`;
     notification.textContent = message;
+    
+    // Estilos da notificação
     notification.style.cssText = `
         position: fixed;
         top: 20px;
@@ -131,7 +140,7 @@ function showNotification(message, type = 'success') {
     }, 3000);
 }
 
-// Função para buscar bandeira
+// Busca bandeira de um país
 async function fetchBandeira(nomePais) {
     try {
         const response = await fetch(`backend/api_bandeira.php?nome=${encodeURIComponent(nomePais)}`);
@@ -142,7 +151,7 @@ async function fetchBandeira(nomePais) {
     }
 }
 
-// Função para buscar clima
+// Busca clima de uma cidade
 async function fetchClima(cidadeNome) {
     try {
         const response = await fetch(`backend/api.php?cidade=${encodeURIComponent(cidadeNome)}`);
